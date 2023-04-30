@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patient">
+      <h2 data-cy="patientDetailsHeading"><span jhiTranslate="infirmerieApp.patient.detail.title">Patient</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patient.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.nom">Nom</span></dt>
+        <dd>
+          <span>{{ patient.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.preNom">Pre Nom</span></dt>
+        <dd>
+          <span>{{ patient.preNom }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.dateNaissance">Date Naissance</span></dt>
+        <dd>
+          <span>{{ patient.dateNaissance | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.lieuNaissance">Lieu Naissance</span></dt>
+        <dd>
+          <span>{{ patient.lieuNaissance }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.sexe">Sexe</span></dt>
+        <dd>
+          <span>{{ patient.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="patient.photo">
+            <a (click)="openFile(patient.photo, patient.photoContentType)">
+              <img [src]="'data:' + patient.photoContentType + ';base64,' + patient.photo" style="max-width: 100%" alt="patient image" />
+            </a>
+            {{ patient.photoContentType }}, {{ byteSize(patient.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.contact">Contact</span></dt>
+        <dd>
+          <span>{{ patient.contact }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.statut">Statut</span></dt>
+        <dd>
+          <span>{{ patient.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.tabac">Tabac</span></dt>
+        <dd>
+          <span>{{ patient.tabac }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.alcool">Alcool</span></dt>
+        <dd>
+          <span>{{ patient.alcool }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.sport">Sport</span></dt>
+        <dd>
+          <span>{{ patient.sport }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.cigarette">Cigarette</span></dt>
+        <dd>
+          <span>{{ patient.cigarette }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.patient.contactParent">Contact Parent</span></dt>
+        <dd>
+          <span>{{ patient.contactParent }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patient', patient.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

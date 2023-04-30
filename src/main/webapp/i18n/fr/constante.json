@@ -1,0 +1,28 @@
+{
+  "infirmerieApp": {
+    "constante": {
+      "home": {
+        "title": "Constantes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Constante",
+        "createOrEditLabel": "Créer ou éditer un Constante",
+        "notFound": "Aucun Constante trouvé"
+      },
+      "created": "Un nouveau Constante a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Constante avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Constante avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Constante {{ id }} ?"
+      },
+      "detail": {
+        "title": "Constante"
+      },
+      "id": "ID",
+      "masse": "Masse",
+      "temperature": "Temperature",
+      "taille": "Taille",
+      "pouls": "Pouls",
+      "consultation": "Consultation"
+    }
+  }
+}

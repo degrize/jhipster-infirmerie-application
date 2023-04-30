@@ -1,0 +1,100 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233142",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "patient",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preNom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lieuNaissance",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "contact",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tabac",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "alcool",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sport",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cigarette",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactParent",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Patient",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "libAntecedent",
+      "otherEntityName": "antecedent",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "antecedent",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "matricule",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "patient",
+      "ownerSide": false,
+      "relationshipName": "etudiant",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "matricule",
+      "otherEntityName": "personnel",
+      "otherEntityRelationshipName": "patient",
+      "ownerSide": false,
+      "relationshipName": "personnel",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "patient",
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

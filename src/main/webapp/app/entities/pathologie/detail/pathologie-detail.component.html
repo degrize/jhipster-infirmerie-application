@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pathologie">
+      <h2 data-cy="pathologieDetailsHeading"><span jhiTranslate="infirmerieApp.pathologie.detail.title">Pathologie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ pathologie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.pathologie.libellePathologie">Libelle Pathologie</span></dt>
+        <dd>
+          <span>{{ pathologie.libellePathologie }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.pathologie.typePathologie">Type Pathologie</span></dt>
+        <dd>
+          <div *ngIf="pathologie.typePathologie">
+            <a [routerLink]="['/type-pathologie', pathologie.typePathologie.id, 'view']">{{ pathologie.typePathologie.typePathologie }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.pathologie.consultation">Consultation</span></dt>
+        <dd>
+          <span *ngFor="let consultation of pathologie.consultations; let last = last">
+            <a [routerLink]="['/consultation', consultation.id, 'view']">{{ consultation.nom }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/pathologie', pathologie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

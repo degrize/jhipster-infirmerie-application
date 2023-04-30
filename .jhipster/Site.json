@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233146",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "site",
+  "fields": [
+    {
+      "fieldName": "site",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Site",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "batimentLibelle",
+      "otherEntityName": "batiment",
+      "otherEntityRelationshipName": "site",
+      "relationshipName": "batiment",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233204",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "filiere",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cycle",
+      "fieldType": "Cycle",
+      "fieldValues": "PREPA,TS,ING,MASTER,DOCTORAT"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Filiere",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "filiere",
+      "relationshipName": "classe",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "ecole",
+      "otherEntityRelationshipName": "filiere",
+      "relationshipName": "ecole",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

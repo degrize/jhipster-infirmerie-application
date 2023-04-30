@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233151",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_pathologie",
+  "fields": [
+    {
+      "fieldName": "typePathologie",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypePathologie",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "libellePathologie",
+      "otherEntityName": "pathologie",
+      "otherEntityRelationshipName": "typePathologie",
+      "relationshipName": "pathologie",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

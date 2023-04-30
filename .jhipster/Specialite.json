@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233201",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "specialite",
+  "fields": [
+    {
+      "fieldName": "specialite",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Specialite",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "agentSante",
+      "otherEntityRelationshipName": "specialite",
+      "ownerSide": false,
+      "relationshipName": "agentSante",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

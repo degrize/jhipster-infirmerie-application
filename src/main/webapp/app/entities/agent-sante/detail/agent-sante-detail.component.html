@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="agentSante">
+      <h2 data-cy="agentSanteDetailsHeading"><span jhiTranslate="infirmerieApp.agentSante.detail.title">Agent Sante</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ agentSante.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.nom">Nom</span></dt>
+        <dd>
+          <span>{{ agentSante.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ agentSante.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.contact">Contact</span></dt>
+        <dd>
+          <span>{{ agentSante.contact }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ agentSante.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.login">Login</span></dt>
+        <dd>
+          <span>{{ agentSante.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.motDePasse">Mot De Passe</span></dt>
+        <dd>
+          <span>{{ agentSante.motDePasse }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.agentSante.specialite">Specialite</span></dt>
+        <dd>
+          <span *ngFor="let specialite of agentSante.specialites; let last = last">
+            <a [routerLink]="['/specialite', specialite.id, 'view']">{{ specialite.specialite }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/agent-sante', agentSante.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<form *ngIf="constante" name="deleteForm" (ngSubmit)="confirmDelete(constante.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="constanteDeleteDialogHeading" jhiTranslate="entity.delete.title">Confirmation de suppression</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-delete-constante-heading" jhiTranslate="infirmerieApp.constante.delete.question" [translateValues]="{ id: constante.id }">
+      Êtes-vous certain de vouloir supprimer le Constante {{ constante.id }} ?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+    </button>
+
+    <button id="jhi-confirm-delete-constante" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233156",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_medicament",
+  "fields": [
+    {
+      "fieldName": "typeMedicament",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypeMedicament",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "medicament",
+      "otherEntityName": "medicament",
+      "otherEntityRelationshipName": "typeMedicament",
+      "relationshipName": "medicament",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

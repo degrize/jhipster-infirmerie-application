@@ -1,0 +1,28 @@
+{
+  "infirmerieApp": {
+    "centreSante": {
+      "home": {
+        "title": "CentreSantes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Centre Sante",
+        "createOrEditLabel": "Créer ou éditer un Centre Sante",
+        "notFound": "Aucun Centre Sante trouvé"
+      },
+      "created": "Un nouveau Centre Sante a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Centre Sante avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Centre Sante avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Centre Sante {{ id }} ?"
+      },
+      "detail": {
+        "title": "Centre Sante"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "adresse": "Adresse",
+      "contact": "Contact",
+      "email": "Email",
+      "numeroMatriculation": "Numero Matriculation"
+    }
+  }
+}

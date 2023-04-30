@@ -1,0 +1,26 @@
+{
+  "infirmerieApp": {
+    "batiment": {
+      "home": {
+        "title": "Batiments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Batiment",
+        "createOrEditLabel": "Créer ou éditer un Batiment",
+        "notFound": "Aucun Batiment trouvé"
+      },
+      "created": "Un nouveau Batiment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Batiment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Batiment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Batiment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Batiment"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "site": "Site",
+      "chambre": "Chambre"
+    }
+  }
+}

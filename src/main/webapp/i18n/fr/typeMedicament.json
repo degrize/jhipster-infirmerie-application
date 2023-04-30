@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "typeMedicament": {
+      "home": {
+        "title": "TypeMedicaments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Medicament",
+        "createOrEditLabel": "Créer ou éditer un Type Medicament",
+        "notFound": "Aucun Type Medicament trouvé"
+      },
+      "created": "Un nouveau Type Medicament a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Medicament avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Medicament avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Medicament {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Medicament"
+      },
+      "id": "ID",
+      "typeMedicament": "Type Medicament",
+      "medicament": "Medicament"
+    }
+  }
+}

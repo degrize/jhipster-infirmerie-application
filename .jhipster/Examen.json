@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233158",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "examen",
+  "fields": [
+    {
+      "fieldName": "examenLibelle",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Examen",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "examen",
+      "relationshipName": "consultation",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

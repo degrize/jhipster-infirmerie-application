@@ -1,0 +1,116 @@
+<div>
+  <h2 id="page-heading" data-cy="CentreSanteHeading">
+    <span jhiTranslate="infirmerieApp.centreSante.home.title">CentreSantes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="infirmerieApp.centreSante.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-centre-sante"
+        [routerLink]="['/centre-sante/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="infirmerieApp.centreSante.home.createLabel"> Créer un nouveau Centre Sante </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="centreSantes?.length === 0">
+    <span jhiTranslate="infirmerieApp.centreSante.home.notFound">Aucun Centre Sante trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="centreSantes && centreSantes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.centreSante.nom">Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="adresse">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.centreSante.adresse">Adresse</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="contact">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.centreSante.contact">Contact</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.centreSante.email">Email</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="numeroMatriculation">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.centreSante.numeroMatriculation">Numero Matriculation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let centreSante of centreSantes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/centre-sante', centreSante.id, 'view']">{{ centreSante.id }}</a>
+          </td>
+          <td>{{ centreSante.nom }}</td>
+          <td>{{ centreSante.adresse }}</td>
+          <td>{{ centreSante.contact }}</td>
+          <td>{{ centreSante.email }}</td>
+          <td>{{ centreSante.numeroMatriculation }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/centre-sante', centreSante.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/centre-sante', centreSante.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(centreSante)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

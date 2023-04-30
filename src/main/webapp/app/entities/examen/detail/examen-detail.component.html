@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="examen">
+      <h2 data-cy="examenDetailsHeading"><span jhiTranslate="infirmerieApp.examen.detail.title">Examen</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ examen.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.examen.examenLibelle">Examen Libelle</span></dt>
+        <dd>
+          <span>{{ examen.examenLibelle }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.examen.consultation">Consultation</span></dt>
+        <dd>
+          <div *ngIf="examen.consultation">
+            <a [routerLink]="['/consultation', examen.consultation.id, 'view']">{{ examen.consultation.motif }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/examen', examen.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

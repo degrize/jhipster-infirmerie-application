@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233149",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "antecedent",
+  "fields": [
+    {
+      "fieldName": "libAntecedent",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Antecedent",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "antecedent",
+      "relationshipName": "patient",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

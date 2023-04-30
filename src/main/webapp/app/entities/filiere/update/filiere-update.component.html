@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-filiere-heading" data-cy="FiliereCreateUpdateHeading" jhiTranslate="infirmerieApp.filiere.home.createOrEditLabel">
+        Créer ou éditer un Filiere
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.filiere.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.filiere.cycle" for="field_cycle">Cycle</label>
+          <select class="form-control" name="cycle" formControlName="cycle" id="field_cycle" data-cy="cycle">
+            <option [ngValue]="null">{{ 'infirmerieApp.Cycle.null' | translate }}</option>
+            <option *ngFor="let cycle of cycleValues" [value]="cycle">{{ 'infirmerieApp.Cycle.' + cycle | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.filiere.classe" for="field_classe">Classe</label>
+          <select
+            class="form-control"
+            id="field_classe"
+            data-cy="classe"
+            name="classe"
+            formControlName="classe"
+            [compareWith]="compareClasse"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="classeOption" *ngFor="let classeOption of classesSharedCollection">{{ classeOption.nom }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.filiere.ecole" for="field_ecole">Ecole</label>
+          <select class="form-control" id="field_ecole" data-cy="ecole" name="ecole" formControlName="ecole" [compareWith]="compareEcole">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ecoleOption" *ngFor="let ecoleOption of ecolesSharedCollection">{{ ecoleOption.nom }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

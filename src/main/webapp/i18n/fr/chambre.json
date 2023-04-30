@@ -1,0 +1,26 @@
+{
+  "infirmerieApp": {
+    "chambre": {
+      "home": {
+        "title": "Chambres",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Chambre",
+        "createOrEditLabel": "Créer ou éditer un Chambre",
+        "notFound": "Aucun Chambre trouvé"
+      },
+      "created": "Un nouveau Chambre a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Chambre avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Chambre avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Chambre {{ id }} ?"
+      },
+      "detail": {
+        "title": "Chambre"
+      },
+      "id": "ID",
+      "numeroChambre": "Numero Chambre",
+      "batiment": "Batiment",
+      "etudiant": "Etudiant"
+    }
+  }
+}

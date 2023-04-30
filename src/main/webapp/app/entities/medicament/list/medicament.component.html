@@ -1,0 +1,112 @@
+<div>
+  <h2 id="page-heading" data-cy="MedicamentHeading">
+    <span jhiTranslate="infirmerieApp.medicament.home.title">Medicaments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="infirmerieApp.medicament.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-medicament"
+        [routerLink]="['/medicament/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="infirmerieApp.medicament.home.createLabel"> Créer un nouveau Medicament </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="medicaments?.length === 0">
+    <span jhiTranslate="infirmerieApp.medicament.home.notFound">Aucun Medicament trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="medicaments && medicaments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="medicament">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.medicament.medicament">Medicament</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="typeMedicament.typeMedicament">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.medicament.typeMedicament">Type Medicament</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ordonnance.ordonnanceDescription">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.medicament.ordonnance">Ordonnance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let medicament of medicaments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/medicament', medicament.id, 'view']">{{ medicament.id }}</a>
+          </td>
+          <td>{{ medicament.medicament }}</td>
+          <td>
+            <div *ngIf="medicament.typeMedicament">
+              <a [routerLink]="['/type-medicament', medicament.typeMedicament.id, 'view']">{{
+                medicament.typeMedicament.typeMedicament
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="medicament.ordonnance">
+              <a [routerLink]="['/ordonnance', medicament.ordonnance.id, 'view']">{{ medicament.ordonnance.ordonnanceDescription }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/medicament', medicament.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/medicament', medicament.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(medicament)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

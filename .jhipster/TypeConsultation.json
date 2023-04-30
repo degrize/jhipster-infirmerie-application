@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233141",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_consultation",
+  "fields": [
+    {
+      "fieldName": "libelleTypeConsultation",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypeConsultation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "typeConsultation",
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

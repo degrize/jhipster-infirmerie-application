@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "typeConsultation": {
+      "home": {
+        "title": "TypeConsultations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Consultation",
+        "createOrEditLabel": "Créer ou éditer un Type Consultation",
+        "notFound": "Aucun Type Consultation trouvé"
+      },
+      "created": "Un nouveau Type Consultation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Consultation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Consultation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Consultation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Consultation"
+      },
+      "id": "ID",
+      "libelleTypeConsultation": "Libelle Type Consultation",
+      "consultation": "Consultation"
+    }
+  }
+}

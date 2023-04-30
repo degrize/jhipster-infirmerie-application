@@ -1,0 +1,63 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233153",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "agent_sante",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contact",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "login",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "motDePasse",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AgentSante",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "typeAgent",
+      "otherEntityName": "typeAgent",
+      "otherEntityRelationshipName": "agentSante",
+      "relationshipName": "typeAgent",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "specialite",
+      "otherEntityName": "specialite",
+      "otherEntityRelationshipName": "agentSante",
+      "ownerSide": true,
+      "relationshipName": "specialite",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "agentSante",
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

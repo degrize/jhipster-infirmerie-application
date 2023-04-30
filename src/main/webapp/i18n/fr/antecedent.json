@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "antecedent": {
+      "home": {
+        "title": "Antecedents",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Antecedent",
+        "createOrEditLabel": "Créer ou éditer un Antecedent",
+        "notFound": "Aucun Antecedent trouvé"
+      },
+      "created": "Un nouveau Antecedent a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Antecedent avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Antecedent avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Antecedent {{ id }} ?"
+      },
+      "detail": {
+        "title": "Antecedent"
+      },
+      "id": "ID",
+      "libAntecedent": "Lib Antecedent",
+      "patient": "Patient"
+    }
+  }
+}

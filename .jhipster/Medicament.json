@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233155",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "medicament",
+  "fields": [
+    {
+      "fieldName": "medicament",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Medicament",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "typeMedicament",
+      "otherEntityName": "typeMedicament",
+      "otherEntityRelationshipName": "medicament",
+      "relationshipName": "typeMedicament",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "ordonnanceDescription",
+      "otherEntityName": "ordonnance",
+      "otherEntityRelationshipName": "medicament",
+      "relationshipName": "ordonnance",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-patient-heading" data-cy="PatientCreateUpdateHeading" jhiTranslate="infirmerieApp.patient.home.createOrEditLabel">
+        Créer ou éditer un Patient
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.preNom" for="field_preNom">Pre Nom</label>
+          <input type="text" class="form-control" name="preNom" id="field_preNom" data-cy="preNom" formControlName="preNom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.dateNaissance" for="field_dateNaissance">Date Naissance</label>
+          <div class="input-group">
+            <input
+              id="field_dateNaissance"
+              data-cy="dateNaissance"
+              type="text"
+              class="form-control"
+              name="dateNaissance"
+              ngbDatepicker
+              #dateNaissanceDp="ngbDatepicker"
+              formControlName="dateNaissance"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateNaissanceDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.lieuNaissance" for="field_lieuNaissance">Lieu Naissance</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lieuNaissance"
+            id="field_lieuNaissance"
+            data-cy="lieuNaissance"
+            formControlName="lieuNaissance"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.sexe" for="field_sexe">Sexe</label>
+          <input type="text" class="form-control" name="sexe" id="field_sexe" data-cy="sexe" formControlName="sexe" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.photo" for="field_photo">Photo</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('photo')!.value"
+              alt="patient image"
+            />
+            <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_photo"
+              data-cy="photo"
+              (change)="setFileData($event, 'photo', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="photoContentType"
+            id="field_photoContentType"
+            formControlName="photoContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.contact" for="field_contact">Contact</label>
+          <input type="text" class="form-control" name="contact" id="field_contact" data-cy="contact" formControlName="contact" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.statut" for="field_statut">Statut</label>
+          <input type="text" class="form-control" name="statut" id="field_statut" data-cy="statut" formControlName="statut" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.tabac" for="field_tabac">Tabac</label>
+          <input type="text" class="form-control" name="tabac" id="field_tabac" data-cy="tabac" formControlName="tabac" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.alcool" for="field_alcool">Alcool</label>
+          <input type="text" class="form-control" name="alcool" id="field_alcool" data-cy="alcool" formControlName="alcool" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.sport" for="field_sport">Sport</label>
+          <input type="text" class="form-control" name="sport" id="field_sport" data-cy="sport" formControlName="sport" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.cigarette" for="field_cigarette">Cigarette</label>
+          <input type="text" class="form-control" name="cigarette" id="field_cigarette" data-cy="cigarette" formControlName="cigarette" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.patient.contactParent" for="field_contactParent">Contact Parent</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contactParent"
+            id="field_contactParent"
+            data-cy="contactParent"
+            formControlName="contactParent"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233140",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "consultation",
+  "fields": [
+    {
+      "fieldName": "dateConsultation",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "motif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "diagnostic",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "consultationObservation",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Consultation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "constante",
+      "otherEntityRelationshipName": "consultation",
+      "ownerSide": true,
+      "relationshipName": "constante",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "patient",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "agentSante",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "agentSante",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "rdv",
+      "otherEntityRelationshipName": "consultation",
+      "ownerSide": false,
+      "relationshipName": "rdv",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "ordonnanceDescription",
+      "otherEntityName": "ordonnance",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "ordonnance",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "libelleTypeConsultation",
+      "otherEntityName": "typeConsultation",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "typeConsultation",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "examenLibelle",
+      "otherEntityName": "examen",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "examen",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "miseEnObservation",
+      "otherEntityRelationshipName": "miseEnObservation",
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "libellePathologie",
+      "otherEntityName": "pathologie",
+      "otherEntityRelationshipName": "consultation",
+      "ownerSide": false,
+      "relationshipName": "pathologie",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

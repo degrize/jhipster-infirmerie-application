@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233154",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ordonnance",
+  "fields": [
+    {
+      "fieldName": "ordonnanceDescription",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ordonnance",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "ordonnance",
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "medicament",
+      "otherEntityName": "medicament",
+      "otherEntityRelationshipName": "ordonnance",
+      "relationshipName": "medicament",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233148",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "chambre",
+  "fields": [
+    {
+      "fieldName": "numeroChambre",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Chambre",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "batimentLibelle",
+      "otherEntityName": "batiment",
+      "otherEntityRelationshipName": "chambre",
+      "relationshipName": "batiment",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "matricule",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "chambre",
+      "ownerSide": false,
+      "relationshipName": "etudiant",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
