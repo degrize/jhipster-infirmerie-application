@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="rdv">
+      <h2 data-cy="rdvDetailsHeading"><span jhiTranslate="infirmerieApp.rdv.detail.title">Rdv</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ rdv.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.rdv.dateRdv">Date Rdv</span></dt>
+        <dd>
+          <span>{{ rdv.dateRdv | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.rdv.motif">Motif</span></dt>
+        <dd>
+          <span>{{ rdv.motif }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.rdv.consultation">Consultation</span></dt>
+        <dd>
+          <div *ngIf="rdv.consultation">
+            <a [routerLink]="['/consultation', rdv.consultation.id, 'view']">{{ rdv.consultation.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/rdv', rdv.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

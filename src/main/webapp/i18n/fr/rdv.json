@@ -1,0 +1,26 @@
+{
+  "infirmerieApp": {
+    "rdv": {
+      "home": {
+        "title": "Rdvs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Rdv",
+        "createOrEditLabel": "Créer ou éditer un Rdv",
+        "notFound": "Aucun Rdv trouvé"
+      },
+      "created": "Un nouveau Rdv a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rdv avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rdv avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Rdv {{ id }} ?"
+      },
+      "detail": {
+        "title": "Rdv"
+      },
+      "id": "ID",
+      "dateRdv": "Date Rdv",
+      "motif": "Motif",
+      "consultation": "Consultation"
+    }
+  }
+}

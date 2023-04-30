@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233203",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "classe",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Classe",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matricule",
+      "otherEntityName": "etudiant",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "etudiant",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "filiere",
+      "otherEntityRelationshipName": "classe",
+      "relationshipName": "filiere",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

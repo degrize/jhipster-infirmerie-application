@@ -1,0 +1,27 @@
+{
+  "infirmerieApp": {
+    "miseEnObservation": {
+      "home": {
+        "title": "MiseEnObservations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Mise En Observation",
+        "createOrEditLabel": "Créer ou éditer un Mise En Observation",
+        "notFound": "Aucun Mise En Observation trouvé"
+      },
+      "created": "Un nouveau Mise En Observation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mise En Observation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mise En Observation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Mise En Observation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mise En Observation"
+      },
+      "id": "ID",
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "description": "Description",
+      "miseEnObservation": "Mise En Observation"
+    }
+  }
+}

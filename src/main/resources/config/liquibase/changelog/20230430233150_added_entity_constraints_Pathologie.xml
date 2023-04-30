@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Pathologie.
+    -->
+    <changeSet id="20230430233150-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="type_pathologie_id"
+                                 baseTableName="pathologie"
+                                 constraintName="fk_pathologie__type_pathologie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_pathologie"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathologie_id"
+                                 baseTableName="rel_pathologie__consultation"
+                                 constraintName="fk_rel_pathologie__consultation__pathologie_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathologie"/>
+
+        <addForeignKeyConstraint baseColumnNames="consultation_id"
+                                 baseTableName="rel_pathologie__consultation"
+                                 constraintName="fk_rel_pathologie__consultation__consultation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="consultation"/>
+    </changeSet>
+</databaseChangeLog>

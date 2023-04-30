@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233145",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "personnel",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Personnel",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "personnel",
+      "ownerSide": true,
+      "relationshipName": "patient",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "service",
+      "otherEntityRelationshipName": "personnel",
+      "relationshipName": "service",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

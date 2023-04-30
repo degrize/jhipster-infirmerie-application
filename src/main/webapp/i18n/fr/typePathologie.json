@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "typePathologie": {
+      "home": {
+        "title": "TypePathologies",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Pathologie",
+        "createOrEditLabel": "Créer ou éditer un Type Pathologie",
+        "notFound": "Aucun Type Pathologie trouvé"
+      },
+      "created": "Un nouveau Type Pathologie a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Pathologie avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Pathologie avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Pathologie {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Pathologie"
+      },
+      "id": "ID",
+      "typePathologie": "Type Pathologie",
+      "pathologie": "Pathologie"
+    }
+  }
+}

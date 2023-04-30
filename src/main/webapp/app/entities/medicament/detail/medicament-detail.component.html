@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="medicament">
+      <h2 data-cy="medicamentDetailsHeading"><span jhiTranslate="infirmerieApp.medicament.detail.title">Medicament</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ medicament.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.medicament.medicament">Medicament</span></dt>
+        <dd>
+          <span>{{ medicament.medicament }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.medicament.typeMedicament">Type Medicament</span></dt>
+        <dd>
+          <div *ngIf="medicament.typeMedicament">
+            <a [routerLink]="['/type-medicament', medicament.typeMedicament.id, 'view']">{{ medicament.typeMedicament.typeMedicament }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.medicament.ordonnance">Ordonnance</span></dt>
+        <dd>
+          <div *ngIf="medicament.ordonnance">
+            <a [routerLink]="['/ordonnance', medicament.ordonnance.id, 'view']">{{ medicament.ordonnance.ordonnanceDescription }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/medicament', medicament.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

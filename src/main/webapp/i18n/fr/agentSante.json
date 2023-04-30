@@ -1,0 +1,32 @@
+{
+  "infirmerieApp": {
+    "agentSante": {
+      "home": {
+        "title": "AgentSantes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Agent Sante",
+        "createOrEditLabel": "Créer ou éditer un Agent Sante",
+        "notFound": "Aucun Agent Sante trouvé"
+      },
+      "created": "Un nouveau Agent Sante a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Agent Sante avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Agent Sante avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Agent Sante {{ id }} ?"
+      },
+      "detail": {
+        "title": "Agent Sante"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "contact": "Contact",
+      "adresse": "Adresse",
+      "login": "Login",
+      "motDePasse": "Mot De Passe",
+      "typeAgent": "Type Agent",
+      "specialite": "Specialite",
+      "consultation": "Consultation"
+    }
+  }
+}

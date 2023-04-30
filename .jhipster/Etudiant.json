@@ -1,0 +1,43 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233143",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "etudiant",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Etudiant",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "motif",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": true,
+      "relationshipName": "patient",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "chambreLibelle",
+      "otherEntityName": "chambre",
+      "otherEntityRelationshipName": "etudiant",
+      "ownerSide": true,
+      "relationshipName": "chambre",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "etudiant",
+      "relationshipName": "classe",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

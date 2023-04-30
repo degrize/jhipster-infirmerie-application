@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="EtudiantHeading">
+    <span jhiTranslate="infirmerieApp.etudiant.home.title">Etudiants</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="infirmerieApp.etudiant.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-etudiant"
+        [routerLink]="['/etudiant/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="infirmerieApp.etudiant.home.createLabel"> Créer un nouveau Etudiant </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="etudiants?.length === 0">
+    <span jhiTranslate="infirmerieApp.etudiant.home.notFound">Aucun Etudiant trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="etudiants && etudiants.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="matricule">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.etudiant.matricule">Matricule</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="patient.motif">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.etudiant.patient">Patient</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="chambre.chambreLibelle">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.etudiant.chambre">Chambre</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="classe.id">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.etudiant.classe">Classe</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let etudiant of etudiants; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/etudiant', etudiant.id, 'view']">{{ etudiant.id }}</a>
+          </td>
+          <td>{{ etudiant.matricule }}</td>
+          <td>
+            <div *ngIf="etudiant.patient">
+              <a [routerLink]="['/patient', etudiant.patient.id, 'view']">{{ etudiant.patient.motif }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="etudiant.chambre">
+              <a [routerLink]="['/chambre', etudiant.chambre.id, 'view']">{{ etudiant.chambre.chambreLibelle }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="etudiant.classe">
+              <a [routerLink]="['/classe', etudiant.classe.id, 'view']">{{ etudiant.classe.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/etudiant', etudiant.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/etudiant', etudiant.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(etudiant)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

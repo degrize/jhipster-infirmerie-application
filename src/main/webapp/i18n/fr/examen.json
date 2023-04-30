@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "examen": {
+      "home": {
+        "title": "Examen",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Examen",
+        "createOrEditLabel": "Créer ou éditer un Examen",
+        "notFound": "Aucun Examen trouvé"
+      },
+      "created": "Un nouveau Examen a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Examen avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Examen avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Examen {{ id }} ?"
+      },
+      "detail": {
+        "title": "Examen"
+      },
+      "id": "ID",
+      "examenLibelle": "Examen Libelle",
+      "consultation": "Consultation"
+    }
+  }
+}

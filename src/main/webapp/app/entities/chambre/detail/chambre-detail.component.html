@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="chambre">
+      <h2 data-cy="chambreDetailsHeading"><span jhiTranslate="infirmerieApp.chambre.detail.title">Chambre</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ chambre.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.chambre.numeroChambre">Numero Chambre</span></dt>
+        <dd>
+          <span>{{ chambre.numeroChambre }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.chambre.batiment">Batiment</span></dt>
+        <dd>
+          <div *ngIf="chambre.batiment">
+            <a [routerLink]="['/batiment', chambre.batiment.id, 'view']">{{ chambre.batiment.batimentLibelle }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/chambre', chambre.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,189 @@
+
+entity Consultation {
+	dateConsultation LocalDate,
+    motif String,
+    diagnostic String,
+    consultationObservation String
+}
+
+entity TypeConsultation {
+	libelleTypeConsultation String
+}
+
+entity Patient {
+	nom String,
+    preNom String,
+    dateNaissance LocalDate,
+    lieuNaissance String,
+    sexe String,
+    photo ImageBlob,
+    contact String,
+    statut String,
+    tabac String,
+    alcool String,
+    sport String,
+    cigarette String,
+    contactParent String
+}
+
+entity Etudiant {
+	matricule String
+}
+
+entity Service {
+	nom String
+}
+
+entity Personnel {
+	matricule String
+}
+
+entity Site {
+	site String
+}
+
+entity Batiment {
+	nom String
+}
+
+entity Chambre {
+	numeroChambre Integer
+}
+
+entity Antecedent {
+	libAntecedent String
+}
+
+entity Pathologie {
+	libellePathologie String
+}
+
+entity TypePathologie {
+	typePathologie String
+}
+
+entity Rdv {
+	dateRdv LocalDate,
+    motif String
+}
+
+entity AgentSante {
+	nom String,
+    prenom String,
+    contact String,
+    adresse String,
+    login String,
+    motDePasse String
+}
+
+entity Ordonnance {
+	ordonnanceDescription String
+}
+
+entity Medicament {
+	medicament String
+}
+
+entity TypeMedicament {
+	typeMedicament String
+}
+
+entity Constante {
+	masse Double,
+    temperature Double,
+    taille Double,
+    pouls Integer
+}
+
+entity Examen {
+	examenLibelle String
+}
+
+entity MiseEnObservation{
+	dateDebut LocalDate,
+    dateFin LocalDate,
+    description String,
+}
+
+entity CentreSante {
+	nom String,
+    adresse String,
+    contact String,
+    email String,
+    numeroMatriculation String
+}
+
+entity Specialite {
+	specialite String,
+}
+
+entity TypeAgent {
+	typeAgent String
+}
+
+entity Classe {
+	nom String,
+}
+
+entity Filiere {
+	nom String,
+    cycle Cycle
+}
+
+
+entity Ecole {
+	nom String,
+}
+
+
+enum Cycle {
+	PREPA,
+	TS,
+    ING,
+    MASTER,
+    DOCTORAT
+}
+
+relationship ManyToOne {
+  Consultation{patient(motif)} to Patient{consultation(nom)},
+  Consultation{agentSante(nom)} to AgentSante{consultation(nom)},
+  Batiment{site(lieuSite)} to Site{batiment(batimentLibelle)},
+  Chambre{batiment(batimentLibelle)} to Batiment{chambre(chambreLibelle)},
+  Pathologie{typePathologie(typePathologie)} to TypePathologie{pathologie(libellePathologie)},
+  Medicament{typeMedicament(typeMedicament)} to TypeMedicament{medicament(medicament)},
+  Examen{consultation(motif)} to Consultation{examen(examenLibelle)},
+  MiseEnObservation{MiseEnObservation(description)} to Consultation{consultation(motif)},
+  Personnel{service(nom)} to Service{personnel(matricule)},
+}
+
+relationship OneToOne {
+  Etudiant{patient(motif)} to Patient{etudiant(matricule)},
+  Etudiant{chambre(chambreLibelle)} to Chambre{etudiant(matricule)},
+  Personnel{patient(motif)} to Patient{personnel(matricule)},
+  Consultation{constante} to Constante{consultation(nom)},
+}
+
+relationship OneToOne {
+    Rdv{consultation(nom)} to Consultation{rdv(motif)},
+    
+}
+
+relationship OneToMany {
+	 Classe{etudiant(matricule)} to Etudiant,
+     Classe{filiere(nom)} to Filiere{classe(nom)},
+     Patient{antecedent(libAntecedent)} to Antecedent{patient(nom)},
+     Ordonnance{consultation(nom)} to Consultation{ordonnance(ordonnanceDescription)},
+     Ecole{filiere(nom)} to Filiere{ecole(nom)},
+     Ordonnance{medicament(medicament)} to Medicament{ordonnance(ordonnanceDescription)},
+     TypeConsultation{Consultation(motif)} to Consultation{TypeConsultation(libelleTypeConsultation)},
+     AgentSante{typeAgent(typeAgent)} to TypeAgent{agentSante(nom)}
+}
+
+relationship ManyToMany {
+  Pathologie{consultation(nom)} to Consultation{pathologie(libellePathologie)},
+  AgentSante{specialite(specialite)} to Specialite{agentSante(nom)},
+}
+
+
+
+

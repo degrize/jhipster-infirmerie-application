@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="RdvHeading">
+    <span jhiTranslate="infirmerieApp.rdv.home.title">Rdvs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="infirmerieApp.rdv.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-rdv"
+        [routerLink]="['/rdv/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="infirmerieApp.rdv.home.createLabel"> Créer un nouveau Rdv </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="rdvs?.length === 0">
+    <span jhiTranslate="infirmerieApp.rdv.home.notFound">Aucun Rdv trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="rdvs && rdvs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateRdv">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.rdv.dateRdv">Date Rdv</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="motif">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.rdv.motif">Motif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="consultation.nom">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.rdv.consultation">Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rdv of rdvs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/rdv', rdv.id, 'view']">{{ rdv.id }}</a>
+          </td>
+          <td>{{ rdv.dateRdv | formatMediumDate }}</td>
+          <td>{{ rdv.motif }}</td>
+          <td>
+            <div *ngIf="rdv.consultation">
+              <a [routerLink]="['/consultation', rdv.consultation.id, 'view']">{{ rdv.consultation.nom }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/rdv', rdv.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/rdv', rdv.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(rdv)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

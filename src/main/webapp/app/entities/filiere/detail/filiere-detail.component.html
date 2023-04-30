@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="filiere">
+      <h2 data-cy="filiereDetailsHeading"><span jhiTranslate="infirmerieApp.filiere.detail.title">Filiere</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ filiere.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.filiere.nom">Nom</span></dt>
+        <dd>
+          <span>{{ filiere.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.filiere.cycle">Cycle</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'infirmerieApp.Cycle.' + filiere.cycle }}">{{ filiere.cycle }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.filiere.classe">Classe</span></dt>
+        <dd>
+          <div *ngIf="filiere.classe">
+            <a [routerLink]="['/classe', filiere.classe.id, 'view']">{{ filiere.classe.nom }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.filiere.ecole">Ecole</span></dt>
+        <dd>
+          <div *ngIf="filiere.ecole">
+            <a [routerLink]="['/ecole', filiere.ecole.id, 'view']">{{ filiere.ecole.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/filiere', filiere.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

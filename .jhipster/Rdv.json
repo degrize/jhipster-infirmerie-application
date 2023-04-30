@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233152",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "rdv",
+  "fields": [
+    {
+      "fieldName": "dateRdv",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "motif",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rdv",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "rdv",
+      "ownerSide": true,
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}

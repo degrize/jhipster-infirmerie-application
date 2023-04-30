@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233159",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "mise_en_observation",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "MiseEnObservation",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "description",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "consultation",
+      "relationshipName": "miseEnObservation",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

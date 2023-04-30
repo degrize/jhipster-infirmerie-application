@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="ConsultationHeading">
+    <span jhiTranslate="infirmerieApp.consultation.home.title">Consultations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="infirmerieApp.consultation.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-consultation"
+        [routerLink]="['/consultation/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="infirmerieApp.consultation.home.createLabel"> Créer un nouveau Consultation </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="consultations?.length === 0">
+    <span jhiTranslate="infirmerieApp.consultation.home.notFound">Aucun Consultation trouvé</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="consultations && consultations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="dateConsultation">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.dateConsultation">Date Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="motif">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.motif">Motif</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="diagnostic">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.diagnostic">Diagnostic</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="consultationObservation">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.consultationObservation">Consultation Observation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="constante.id">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.constante">Constante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="patient.motif">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.patient">Patient</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="agentSante.nom">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.agentSante">Agent Sante</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="ordonnance.ordonnanceDescription">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.ordonnance">Ordonnance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="typeConsultation.libelleTypeConsultation">
+            <div class="d-flex">
+              <span jhiTranslate="infirmerieApp.consultation.typeConsultation">Type Consultation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consultation of consultations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/consultation', consultation.id, 'view']">{{ consultation.id }}</a>
+          </td>
+          <td>{{ consultation.dateConsultation | formatMediumDate }}</td>
+          <td>{{ consultation.motif }}</td>
+          <td>{{ consultation.diagnostic }}</td>
+          <td>{{ consultation.consultationObservation }}</td>
+          <td>
+            <div *ngIf="consultation.constante">
+              <a [routerLink]="['/constante', consultation.constante.id, 'view']">{{ consultation.constante.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="consultation.patient">
+              <a [routerLink]="['/patient', consultation.patient.id, 'view']">{{ consultation.patient.motif }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="consultation.agentSante">
+              <a [routerLink]="['/agent-sante', consultation.agentSante.id, 'view']">{{ consultation.agentSante.nom }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="consultation.ordonnance">
+              <a [routerLink]="['/ordonnance', consultation.ordonnance.id, 'view']">{{ consultation.ordonnance.ordonnanceDescription }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="consultation.typeConsultation">
+              <a [routerLink]="['/type-consultation', consultation.typeConsultation.id, 'view']">{{
+                consultation.typeConsultation.libelleTypeConsultation
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/consultation', consultation.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/consultation', consultation.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(consultation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

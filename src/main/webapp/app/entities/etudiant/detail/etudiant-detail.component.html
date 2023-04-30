@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="etudiant">
+      <h2 data-cy="etudiantDetailsHeading"><span jhiTranslate="infirmerieApp.etudiant.detail.title">Etudiant</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ etudiant.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.etudiant.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ etudiant.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.etudiant.patient">Patient</span></dt>
+        <dd>
+          <div *ngIf="etudiant.patient">
+            <a [routerLink]="['/patient', etudiant.patient.id, 'view']">{{ etudiant.patient.motif }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.etudiant.chambre">Chambre</span></dt>
+        <dd>
+          <div *ngIf="etudiant.chambre">
+            <a [routerLink]="['/chambre', etudiant.chambre.id, 'view']">{{ etudiant.chambre.chambreLibelle }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.etudiant.classe">Classe</span></dt>
+        <dd>
+          <div *ngIf="etudiant.classe">
+            <a [routerLink]="['/classe', etudiant.classe.id, 'view']">{{ etudiant.classe.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/etudiant', etudiant.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

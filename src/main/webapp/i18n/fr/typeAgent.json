@@ -1,0 +1,25 @@
+{
+  "infirmerieApp": {
+    "typeAgent": {
+      "home": {
+        "title": "TypeAgents",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Agent",
+        "createOrEditLabel": "Créer ou éditer un Type Agent",
+        "notFound": "Aucun Type Agent trouvé"
+      },
+      "created": "Un nouveau Type Agent a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Agent avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Agent avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Agent {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Agent"
+      },
+      "id": "ID",
+      "typeAgent": "Type Agent",
+      "agentSante": "Agent Sante"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "infirmerieApp": {
+    "ordonnance": {
+      "home": {
+        "title": "Ordonnances",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Ordonnance",
+        "createOrEditLabel": "Créer ou éditer un Ordonnance",
+        "notFound": "Aucun Ordonnance trouvé"
+      },
+      "created": "Un nouveau Ordonnance a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Ordonnance avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Ordonnance avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Ordonnance {{ id }} ?"
+      },
+      "detail": {
+        "title": "Ordonnance"
+      },
+      "id": "ID",
+      "ordonnanceDescription": "Ordonnance Description",
+      "consultation": "Consultation",
+      "medicament": "Medicament"
+    }
+  }
+}

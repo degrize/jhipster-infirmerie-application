@@ -1,0 +1,173 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-consultation-heading"
+        data-cy="ConsultationCreateUpdateHeading"
+        jhiTranslate="infirmerieApp.consultation.home.createOrEditLabel"
+      >
+        Créer ou éditer un Consultation
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.dateConsultation" for="field_dateConsultation"
+            >Date Consultation</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateConsultation"
+              data-cy="dateConsultation"
+              type="text"
+              class="form-control"
+              name="dateConsultation"
+              ngbDatepicker
+              #dateConsultationDp="ngbDatepicker"
+              formControlName="dateConsultation"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateConsultationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.motif" for="field_motif">Motif</label>
+          <input type="text" class="form-control" name="motif" id="field_motif" data-cy="motif" formControlName="motif" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.diagnostic" for="field_diagnostic">Diagnostic</label>
+          <input
+            type="text"
+            class="form-control"
+            name="diagnostic"
+            id="field_diagnostic"
+            data-cy="diagnostic"
+            formControlName="diagnostic"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.consultationObservation" for="field_consultationObservation"
+            >Consultation Observation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="consultationObservation"
+            id="field_consultationObservation"
+            data-cy="consultationObservation"
+            formControlName="consultationObservation"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.constante" for="field_constante">Constante</label>
+          <select
+            class="form-control"
+            id="field_constante"
+            data-cy="constante"
+            name="constante"
+            formControlName="constante"
+            [compareWith]="compareConstante"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="constanteOption" *ngFor="let constanteOption of constantesCollection">{{ constanteOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.patient" for="field_patient">Patient</label>
+          <select
+            class="form-control"
+            id="field_patient"
+            data-cy="patient"
+            name="patient"
+            formControlName="patient"
+            [compareWith]="comparePatient"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="patientOption" *ngFor="let patientOption of patientsSharedCollection">{{ patientOption.motif }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.agentSante" for="field_agentSante">Agent Sante</label>
+          <select
+            class="form-control"
+            id="field_agentSante"
+            data-cy="agentSante"
+            name="agentSante"
+            formControlName="agentSante"
+            [compareWith]="compareAgentSante"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="agentSanteOption" *ngFor="let agentSanteOption of agentSantesSharedCollection">
+              {{ agentSanteOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.ordonnance" for="field_ordonnance">Ordonnance</label>
+          <select
+            class="form-control"
+            id="field_ordonnance"
+            data-cy="ordonnance"
+            name="ordonnance"
+            formControlName="ordonnance"
+            [compareWith]="compareOrdonnance"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ordonnanceOption" *ngFor="let ordonnanceOption of ordonnancesSharedCollection">
+              {{ ordonnanceOption.ordonnanceDescription }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="infirmerieApp.consultation.typeConsultation" for="field_typeConsultation"
+            >Type Consultation</label
+          >
+          <select
+            class="form-control"
+            id="field_typeConsultation"
+            data-cy="typeConsultation"
+            name="typeConsultation"
+            formControlName="typeConsultation"
+            [compareWith]="compareTypeConsultation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="typeConsultationOption" *ngFor="let typeConsultationOption of typeConsultationsSharedCollection">
+              {{ typeConsultationOption.libelleTypeConsultation }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

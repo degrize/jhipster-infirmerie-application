@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="antecedent">
+      <h2 data-cy="antecedentDetailsHeading"><span jhiTranslate="infirmerieApp.antecedent.detail.title">Antecedent</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ antecedent.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.antecedent.libAntecedent">Lib Antecedent</span></dt>
+        <dd>
+          <span>{{ antecedent.libAntecedent }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.antecedent.patient">Patient</span></dt>
+        <dd>
+          <div *ngIf="antecedent.patient">
+            <a [routerLink]="['/patient', antecedent.patient.id, 'view']">{{ antecedent.patient.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/antecedent', antecedent.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

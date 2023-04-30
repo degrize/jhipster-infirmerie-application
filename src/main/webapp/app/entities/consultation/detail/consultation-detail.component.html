@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="consultation">
+      <h2 data-cy="consultationDetailsHeading"><span jhiTranslate="infirmerieApp.consultation.detail.title">Consultation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ consultation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.dateConsultation">Date Consultation</span></dt>
+        <dd>
+          <span>{{ consultation.dateConsultation | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.motif">Motif</span></dt>
+        <dd>
+          <span>{{ consultation.motif }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.diagnostic">Diagnostic</span></dt>
+        <dd>
+          <span>{{ consultation.diagnostic }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.consultationObservation">Consultation Observation</span></dt>
+        <dd>
+          <span>{{ consultation.consultationObservation }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.constante">Constante</span></dt>
+        <dd>
+          <div *ngIf="consultation.constante">
+            <a [routerLink]="['/constante', consultation.constante.id, 'view']">{{ consultation.constante.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.patient">Patient</span></dt>
+        <dd>
+          <div *ngIf="consultation.patient">
+            <a [routerLink]="['/patient', consultation.patient.id, 'view']">{{ consultation.patient.motif }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.agentSante">Agent Sante</span></dt>
+        <dd>
+          <div *ngIf="consultation.agentSante">
+            <a [routerLink]="['/agent-sante', consultation.agentSante.id, 'view']">{{ consultation.agentSante.nom }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.ordonnance">Ordonnance</span></dt>
+        <dd>
+          <div *ngIf="consultation.ordonnance">
+            <a [routerLink]="['/ordonnance', consultation.ordonnance.id, 'view']">{{ consultation.ordonnance.ordonnanceDescription }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.consultation.typeConsultation">Type Consultation</span></dt>
+        <dd>
+          <div *ngIf="consultation.typeConsultation">
+            <a [routerLink]="['/type-consultation', consultation.typeConsultation.id, 'view']">{{
+              consultation.typeConsultation.libelleTypeConsultation
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/consultation', consultation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

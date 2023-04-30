@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="typeAgent">
+      <h2 data-cy="typeAgentDetailsHeading"><span jhiTranslate="infirmerieApp.typeAgent.detail.title">Type Agent</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ typeAgent.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.typeAgent.typeAgent">Type Agent</span></dt>
+        <dd>
+          <span>{{ typeAgent.typeAgent }}</span>
+        </dd>
+        <dt><span jhiTranslate="infirmerieApp.typeAgent.agentSante">Agent Sante</span></dt>
+        <dd>
+          <div *ngIf="typeAgent.agentSante">
+            <a [routerLink]="['/agent-sante', typeAgent.agentSante.id, 'view']">{{ typeAgent.agentSante.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/type-agent', typeAgent.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233202",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "type_agent",
+  "fields": [
+    {
+      "fieldName": "typeAgent",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TypeAgent",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "agentSante",
+      "otherEntityRelationshipName": "typeAgent",
+      "relationshipName": "agentSante",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

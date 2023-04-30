@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233205",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ecole",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ecole",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "filiere",
+      "otherEntityRelationshipName": "ecole",
+      "relationshipName": "filiere",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

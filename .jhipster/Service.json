@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233144",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "service",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Service",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "matricule",
+      "otherEntityName": "personnel",
+      "otherEntityRelationshipName": "service",
+      "relationshipName": "personnel",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

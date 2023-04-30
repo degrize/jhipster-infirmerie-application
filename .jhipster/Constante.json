@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20230430233157",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "constante",
+  "fields": [
+    {
+      "fieldName": "masse",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "temperature",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "taille",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "pouls",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Constante",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "consultation",
+      "otherEntityRelationshipName": "constante",
+      "ownerSide": false,
+      "relationshipName": "consultation",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
